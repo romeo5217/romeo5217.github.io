@@ -6,7 +6,7 @@
 <title>Birthday Surprise</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 html,body{height:100%;width:100%;overflow:hidden;}
 
 .page{
@@ -22,62 +22,81 @@ html,body{height:100%;width:100%;overflow:hidden;}
   color:white;
   background-size:cover;
   background-position:center;
+  padding:20px;
+  overflow:hidden;
 }
 
 .active{display:flex;}
 
-.overlay{
-  background:rgba(0,0,0,0.45);
-  padding:25px;
-  border-radius:25px;
-  max-width:90%;
-}
+h1{font-size:3em;text-shadow:0 0 15px rgba(0,0,0,0.8);}
+p{font-size:1.3em;margin-top:10px;text-shadow:0 0 12px rgba(0,0,0,0.8);}
+.big{font-size:3.8em;font-weight:800;}
 
 input{
-  padding:12px 16px;
-  border-radius:12px;
-  border:none;
-  outline:none;
-  font-size:1.1em;
-  margin-top:15px;
-  text-align:center;
+  margin-top:15px;padding:10px 16px;border-radius:12px;border:none;outline:none;
+  font-size:1.05em;text-align:center;
 }
 
 button{
-  margin-top:15px;
-  padding:10px 20px;
-  border:none;
-  border-radius:14px;
-  background:#ff7aa2;
-  color:white;
-  font-size:1.1em;
-  cursor:pointer;
-}
-
-h1{font-size:3em;margin-bottom:10px;}
-.big{font-size:3.8em;font-weight:800;}
-
-.party{
-  border:14px dotted #ff7aa2;
-  padding:25px;
-  background:rgba(0,0,0,0.6);
-  border-radius:30px;
-  max-width:92%;
+  margin-top:14px;padding:10px 22px;border:none;border-radius:14px;
+  background:#ff7aa2;color:white;font-size:1.05em;cursor:pointer;
 }
 
 .message{
-  font-size:1.15em;
-  line-height:1.7;
-  margin-top:15px;
+  max-width:900px;font-size:1.2em;line-height:1.7;margin-top:20px;
+  text-shadow:0 0 14px rgba(0,0,0,0.9);
 }
 
 .us-img{
+  position:absolute;top:12px;right:12px;width:85px;
+  border-radius:14px;border:3px solid white;
+}
+
+.party-border{
+  border:12px dotted #ff7aa2;padding:25px;border-radius:30px;
+  backdrop-filter: blur(2px);
+}
+
+/* 💗 Hearts */
+.heart{
   position:absolute;
-  top:12px;
-  right:12px;
-  width:85px;
-  border-radius:14px;
-  border:3px solid white;
+  bottom:-20px;
+  font-size:22px;
+  animation:floatUp 6s linear forwards;
+  opacity:0.8;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-110vh) scale(1.6);opacity:0;}
+}
+
+/* ⭐ Stars */
+.star{
+  position:absolute;
+  bottom:-10px;
+  font-size:14px;
+  opacity:0.8;
+  animation:starFloat 10s linear forwards;
+}
+
+@keyframes starFloat{
+  from{transform:translateY(0) scale(1);opacity:0;}
+  10%{opacity:1;}
+  to{transform:translateY(-120vh) scale(1.8);opacity:0;}
+}
+
+/* 🎆 Fireworks */
+.firework{
+  position:absolute;
+  width:6px;height:6px;border-radius:50%;
+  animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+  from{transform:scale(0.3);opacity:1;}
+  to{transform:translate(var(--x),var(--y)) scale(1);opacity:0;}
 }
 
 @media(max-width:600px){
@@ -93,25 +112,19 @@ h1{font-size:3em;margin-bottom:10px;}
 
 <!-- PAGE 1 -->
 <div class="page active" id="p1" style="background-image:url('1st wallpaperrr.jpeg')">
-  <div class="overlay">
-    <h1>Answer to continue 💫</h1>
-    <p style="margin-top:10px;">Favourite sweet of Shalu?</p>
-    <input id="a1" placeholder="Type here...">
-    <br>
-    <button onclick="check1()">Next</button>
-  </div>
+  <h1>Answer to continue ✨</h1>
+  <p>Favourite sweet of shalu?</p>
+  <input id="a1" placeholder="Type here...">
+  <button onclick="check1()">Next</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="p2" style="background-image:url('2nd wallpaperr.jpeg')">
   <audio id="song" src="happy-birthday-254480.mp3" loop></audio>
-  <div class="overlay">
-    <h1 class="big">Happy Birthday Tudu 🎉</h1>
-    <p style="margin-top:20px;">Tudu's birth month?</p>
-    <input id="a2" placeholder="Type here...">
-    <br>
-    <button onclick="check2()">Next</button>
-  </div>
+  <h1 class="big">Happy Birthday 🥳🎉</h1>
+  <p>Tudu's Birth month?</p>
+  <input id="a2" placeholder="Type here...">
+  <button onclick="check2()">Next</button>
 </div>
 
 <!-- PAGE 3 -->
@@ -119,31 +132,76 @@ h1{font-size:3em;margin-bottom:10px;}
   <audio autoplay loop src="happy-birthday-254480.mp3"></audio>
   <img src="Us.jpeg" class="us-img">
 
-  <div class="party">
-    <h1>My love 💌</h1>
+  <div class="party-border">
+    <h1>My Love 💌</h1>
     <div class="message">
-      Happy Birthday billoti, be happy, healthy and keep working hard. I want to celebrate it with you being close to you there but one day sure and when the time come, I will eat even your cake hehe, just joking but may be yes. You are my baby. Right now I can't even buy a cheap gift or anything for you by my own earning money but I will work hard and build the Home for us. Let's do it together hipp hipp huree. Enjoy your day birthday girl. I love you ❤️
+      Happy Birthday billoti, be happy, healthy and keep working hard. 
+      I want to celebrate it with you being close to you there but one day sure and when the time come, 
+      I will eat even your cake hehe, just joking but may be yes. You are my baby. 
+      Right now I can't even buy a cheap gift or anything for you by my own earning money 
+      but I will work hard and build the Home for us. Let's do it together hipp hipp huree. 
+      Enjoy your day birthday girl. I love you ❤️⭐
     </div>
   </div>
 </div>
 
 <script>
 function check1(){
-  if(document.getElementById("a1").value.trim().toLowerCase()=="gulab jamun"){
-    document.getElementById("p1").classList.remove("active");
-    document.getElementById("p2").classList.add("active");
-    document.getElementById("song").play();
-  }else{
-    alert("Wrong answer 😛 Try again");
-  }
+  if(a1.value.trim().toLowerCase()=="gulab jamun"){
+    p1.classList.remove("active");
+    p2.classList.add("active");
+    song.play();
+    heartsInterval = setInterval(createHeart,600);
+  }else alert("Wrong 😛 Try again");
 }
 
 function check2(){
-  if(document.getElementById("a2").value.trim().toLowerCase()=="january"){
-    document.getElementById("p2").classList.remove("active");
-    document.getElementById("p3").classList.add("active");
-  }else{
-    alert("Almost 💕 Try again");
+  if(a2.value.trim().toLowerCase()=="january"){
+    p2.classList.remove("active");
+    p3.classList.add("active");
+    clearInterval(heartsInterval);
+    starsInterval = setInterval(createStar,900);
+    fireworksInterval = setInterval(fireworkBurst,1800);
+  }else alert("Almost 💕 Try again");
+}
+
+/* 💗 Hearts */
+function createHeart(){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(18+Math.random()*20)+"px";
+  p2.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+
+/* ⭐ Stars */
+function createStar(){
+  let s=document.createElement("div");
+  s.className="star";
+  s.innerHTML="⭐";
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(10+Math.random()*18)+"px";
+  p3.appendChild(s);
+  setTimeout(()=>s.remove(),10000);
+}
+
+/* 🎆 Fireworks */
+function fireworkBurst(){
+  let x=Math.random()*window.innerWidth;
+  let y=Math.random()*window.innerHeight/2;
+
+  for(let i=0;i<18;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left=x+"px";
+    f.style.top=y+"px";
+    f.style.background="hsl("+Math.random()*360+",100%,70%)";
+    f.style.setProperty("--x",(Math.random()*200-100)+"px");
+    f.style.setProperty("--y",(Math.random()*200-100)+"px");
+    p3.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
   }
 }
 </script>
