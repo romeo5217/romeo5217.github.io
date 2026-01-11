@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{margin:0;min-height:100vh;overflow:hidden;}
+
+.page{
+  display:none;
+  min-height:100vh;
+  background-size:cover;
+  background-position:center;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+  animation:fade 1s ease;
+}
+.page.active{display:flex;}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(1.05);}
+  to{opacity:1;transform:scale(1);}
+}
+
+.card{
+  background:rgba(255,255,255,0.85);
+  padding:25px;
+  border-radius:20px;
+  max-width:520px;
+  width:100%;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+input{
+  width:80%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  margin-top:12px;
+  font-size:16px;
+  text-align:center;
+}
+
+button{
+  margin-top:15px;
+  padding:10px 24px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(45deg,#ff6fae,#ff4d88);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+h1,h2{color:#ff4d88;text-shadow:0 4px 12px rgba(0,0,0,0.2);}
+
+.bigText{
+  font-size:3rem;
+  font-weight:800;
+  color:#ff5fa2;
+}
+
+.partyBorder{
+  border:6px dashed hotpink;
+  animation:party 2s linear infinite;
+}
+
+@keyframes party{
+  0%{border-color:#ff4d88;}
+  25%{border-color:#ffd700;}
+  50%{border-color:#7fff00;}
+  75%{border-color:#00ffff;}
+  100%{border-color:#ff4d88;}
+}
+
+.usPic{
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:75px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1" style="background-image:url('1st wallpaperrr.jpeg')">
+  <div class="card">
+    <h2>Favourite sweet of Shalu ?</h2>
+    <input id="a1" placeholder="Type your answer...">
+    <br>
+    <button onclick="check1()">Next 💗</button>
+    <p id="m1"></p>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2" style="background-image:url('2nd wallpaperr.jpeg')">
+
+  <audio id="song" loop>
+    <source src="happy-birthday-254480.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <div class="bigText">Happy Birthday Tudu 🎂💞</div>
+    <br>
+    <h2>Tudu's birth month?</h2>
+    <input id="a2" placeholder="Type your answer...">
+    <br>
+    <button onclick="check2()">Next 🎀</button>
+    <p id="m2"></p>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3" style="background-image:url('3rd wallpaperr.jpeg');position:relative;">
+
+  <img src="Us.jpeg" class="usPic">
+
+  <div class="card partyBorder">
+    <h1>My Love 💙</h1>
+    <p>
+Happy Birthday billoti, be happy, healthy and keep working hard.  
+I want to celebrate it with you being close to you there but one day sure and when the time come, I will eat even your cake hehe, just joking but may be yes.  
+You are my baby.  
+Right now I can't even buy a cheap gift or anything for you by my own earning money but I will work hard and build the Home for us.  
+Let's do it together hipp hipp huree.  
+Enjoy your day birthday girl.  
+<br><br>
+<b>I love you ❤️</b>
+    </p>
+  </div>
+</div>
+
+<script>
+function check1(){
+  let ans=document.getElementById("a1").value.toLowerCase().trim();
+  if(ans=="gulab jamun"){
+    document.getElementById("p1").classList.remove("active");
+    document.getElementById("p2").classList.add("active");
+    document.getElementById("song").play();
+  }else{
+    document.getElementById("m1").innerText="Hint: her favourite sweet 😉";
+  }
+}
+
+function check2(){
+  let ans=document.getElementById("a2").value.toLowerCase().trim();
+  if(ans=="january"){
+    document.getElementById("p2").classList.remove("active");
+    document.getElementById("p3").classList.add("active");
+    document.getElementById("song").play();
+  }else{
+    document.getElementById("m2").innerText="Hint: first month of the year 💙";
+  }
+}
+</script>
+
+</body>
+</html>
