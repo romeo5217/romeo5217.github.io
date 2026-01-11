@@ -2,90 +2,89 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Love 💙</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise</title>
 
 <style>
-*{box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{margin:0;min-height:100vh;overflow:hidden;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif;}
+html,body{height:100%;width:100%;overflow:hidden;}
 
 .page{
+  position:absolute;
+  top:0;left:0;
+  height:100%;
+  width:100%;
   display:none;
-  min-height:100vh;
-  background-size:cover;
-  background-position:center;
   align-items:center;
   justify-content:center;
   flex-direction:column;
   text-align:center;
-  padding:20px;
-  animation:fade 1s ease;
-}
-.page.active{display:flex;}
-
-@keyframes fade{
-  from{opacity:0;transform:scale(1.05);}
-  to{opacity:1;transform:scale(1);}
+  color:white;
+  background-size:cover;
+  background-position:center;
 }
 
-.card{
-  background:rgba(255,255,255,0.85);
+.active{display:flex;}
+
+.overlay{
+  background:rgba(0,0,0,0.45);
   padding:25px;
-  border-radius:20px;
-  max-width:520px;
-  width:100%;
-  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  border-radius:25px;
+  max-width:90%;
 }
 
 input{
-  width:80%;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid #ccc;
-  margin-top:12px;
-  font-size:16px;
+  padding:12px 16px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  font-size:1.1em;
+  margin-top:15px;
   text-align:center;
 }
 
 button{
   margin-top:15px;
-  padding:10px 24px;
+  padding:10px 20px;
   border:none;
-  border-radius:20px;
-  background:linear-gradient(45deg,#ff6fae,#ff4d88);
+  border-radius:14px;
+  background:#ff7aa2;
   color:white;
-  font-size:16px;
+  font-size:1.1em;
   cursor:pointer;
 }
 
-h1,h2{color:#ff4d88;text-shadow:0 4px 12px rgba(0,0,0,0.2);}
+h1{font-size:3em;margin-bottom:10px;}
+.big{font-size:3.8em;font-weight:800;}
 
-.bigText{
-  font-size:3rem;
-  font-weight:800;
-  color:#ff5fa2;
+.party{
+  border:14px dotted #ff7aa2;
+  padding:25px;
+  background:rgba(0,0,0,0.6);
+  border-radius:30px;
+  max-width:92%;
 }
 
-.partyBorder{
-  border:6px dashed hotpink;
-  animation:party 2s linear infinite;
+.message{
+  font-size:1.15em;
+  line-height:1.7;
+  margin-top:15px;
 }
 
-@keyframes party{
-  0%{border-color:#ff4d88;}
-  25%{border-color:#ffd700;}
-  50%{border-color:#7fff00;}
-  75%{border-color:#00ffff;}
-  100%{border-color:#ff4d88;}
-}
-
-.usPic{
+.us-img{
   position:absolute;
-  top:15px;
-  right:15px;
-  width:75px;
+  top:12px;
+  right:12px;
+  width:85px;
   border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
+  border:3px solid white;
+}
+
+@media(max-width:600px){
+  h1{font-size:2.2em;}
+  .big{font-size:2.7em;}
+  .message{font-size:1em;}
+  .us-img{width:65px;}
 }
 </style>
 </head>
@@ -94,73 +93,57 @@ h1,h2{color:#ff4d88;text-shadow:0 4px 12px rgba(0,0,0,0.2);}
 
 <!-- PAGE 1 -->
 <div class="page active" id="p1" style="background-image:url('1st wallpaperrr.jpeg')">
-  <div class="card">
-    <h2>Favourite sweet of Shalu ?</h2>
-    <input id="a1" placeholder="Type your answer...">
+  <div class="overlay">
+    <h1>Answer to continue 💫</h1>
+    <p style="margin-top:10px;">Favourite sweet of Shalu?</p>
+    <input id="a1" placeholder="Type here...">
     <br>
-    <button onclick="check1()">Next 💗</button>
-    <p id="m1"></p>
+    <button onclick="check1()">Next</button>
   </div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="p2" style="background-image:url('2nd wallpaperr.jpeg')">
-
-  <audio id="song" loop>
-    <source src="happy-birthday-254480.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="card">
-    <div class="bigText">Happy Birthday Tudu 🎂💞</div>
+  <audio id="song" src="happy-birthday-254480.mp3" loop></audio>
+  <div class="overlay">
+    <h1 class="big">Happy Birthday Tudu 🎉</h1>
+    <p style="margin-top:20px;">Tudu's birth month?</p>
+    <input id="a2" placeholder="Type here...">
     <br>
-    <h2>Tudu's birth month?</h2>
-    <input id="a2" placeholder="Type your answer...">
-    <br>
-    <button onclick="check2()">Next 🎀</button>
-    <p id="m2"></p>
+    <button onclick="check2()">Next</button>
   </div>
 </div>
 
 <!-- PAGE 3 -->
-<div class="page" id="p3" style="background-image:url('3rd wallpaperr.jpeg');position:relative;">
+<div class="page" id="p3" style="background-image:url('3rd wallpapr.jpeg')">
+  <audio autoplay loop src="happy-birthday-254480.mp3"></audio>
+  <img src="Us.jpeg" class="us-img">
 
-  <img src="Us.jpeg" class="usPic">
-
-  <div class="card partyBorder">
-    <h1>My Love 💙</h1>
-    <p>
-Happy Birthday billoti, be happy, healthy and keep working hard.  
-I want to celebrate it with you being close to you there but one day sure and when the time come, I will eat even your cake hehe, just joking but may be yes.  
-You are my baby.  
-Right now I can't even buy a cheap gift or anything for you by my own earning money but I will work hard and build the Home for us.  
-Let's do it together hipp hipp huree.  
-Enjoy your day birthday girl.  
-<br><br>
-<b>I love you ❤️</b>
-    </p>
+  <div class="party">
+    <h1>My love 💌</h1>
+    <div class="message">
+      Happy Birthday billoti, be happy, healthy and keep working hard. I want to celebrate it with you being close to you there but one day sure and when the time come, I will eat even your cake hehe, just joking but may be yes. You are my baby. Right now I can't even buy a cheap gift or anything for you by my own earning money but I will work hard and build the Home for us. Let's do it together hipp hipp huree. Enjoy your day birthday girl. I love you ❤️
+    </div>
   </div>
 </div>
 
 <script>
 function check1(){
-  let ans=document.getElementById("a1").value.toLowerCase().trim();
-  if(ans=="gulab jamun"){
+  if(document.getElementById("a1").value.trim().toLowerCase()=="gulab jamun"){
     document.getElementById("p1").classList.remove("active");
     document.getElementById("p2").classList.add("active");
     document.getElementById("song").play();
   }else{
-    document.getElementById("m1").innerText="Hint: her favourite sweet 😉";
+    alert("Wrong answer 😛 Try again");
   }
 }
 
 function check2(){
-  let ans=document.getElementById("a2").value.toLowerCase().trim();
-  if(ans=="january"){
+  if(document.getElementById("a2").value.trim().toLowerCase()=="january"){
     document.getElementById("p2").classList.remove("active");
     document.getElementById("p3").classList.add("active");
-    document.getElementById("song").play();
   }else{
-    document.getElementById("m2").innerText="Hint: first month of the year 💙";
+    alert("Almost 💕 Try again");
   }
 }
 </script>
